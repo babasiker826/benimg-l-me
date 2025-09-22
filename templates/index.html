@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manitama İyi Geceler</title>
+    <style>
+        /* Genel Stiller */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: white;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50% }
+            50% { background-position: 100% 50% }
+            100% { background-position: 0% 50% }
+        }
+
+        /* Konteyner */
+        .container {
+            max-width: 800px;
+            width: 100%;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 0, 0, 0.3) 0%, transparent 70%); /* KIRMIZI YAPILDI */
+            animation: rotate 20s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Başlık */
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+            animation: pulse 2s infinite;
+            position: relative;
+        }
+
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #ff0000, transparent); /* KIRMIZI YAPILDI */
+            animation: lineMove 3s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes lineMove {
+            0% { width: 0; opacity: 0; }
+            50% { width: 100px; opacity: 1; }
+            100% { width: 0; opacity: 0; }
+        }
+
+        /* Kedi Gif */
+        .cat-gif {
+            width: 150px;
+            height: 150px;
+            margin: 20px auto;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid rgba(255, 0, 0, 0.5); /* KIRMIZI YAPILDI */
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.5); /* KIRMIZI YAPILDI */
+            animation: float 5s ease-in-out infinite;
+            position: relative;
+        }
+
+        .cat-gif::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255, 0, 0, 0.5) 0%, transparent 70%); /* KIRMIZI YAPILDI */
+            animation: sparkle 2s infinite;
+        }
+
+        .cat-gif img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes sparkle {
+            0% { opacity: 0; }
+            50% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        /* Mesaj Kutusu */
+        .message-box {
+            background: rgba(255, 0, 0, 0.1); /* KIRMIZI YAPILDI */
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 2s;
+            border: 1px solid rgba(255, 0, 0, 0.3); /* KIRMIZI YAPILDI */
+        }
+
+        .message-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 0, 0, 0.3), transparent); /* KIRMIZI YAPILDI */
+            animation: shine 5s infinite;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes shine {
+            0% { left: -100%; }
+            20% { left: 100%; }
+            100% { left: 100%; }
+        }
+
+        /* Mesajlar */
+        .message {
+            font-size: 1.5rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+            animation: textGlow 3s infinite alternate;
+            position: relative;
+        }
+
+        @keyframes textGlow {
+            from { text-shadow: 0 0 5px rgba(255, 0, 0, 0.5); } /* KIRMIZI YAPILDI */
+            to { text-shadow: 0 0 15px rgba(255, 0, 0, 0.8), 0 0 20px rgba(255, 0, 0, 0.6); } /* KIRMIZI YAPILDI */
+        }
+
+        .special {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #ff0000; /* KIRMIZI YAPILDI */
+            margin: 20px 0;
+            animation: specialPulse 2s infinite;
+        }
+
+        @keyframes specialPulse {
+            0% { transform: scale(1); color: #ff0000; } /* KIRMIZI YAPILDI */
+            50% { transform: scale(1.05); color: #ff6b6b; }
+            100% { transform: scale(1); color: #ff0000; } /* KIRMIZI YAPILDI */
+        }
+
+        /* Yıldız Animasyonu */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .star {
+            position: absolute;
+            background-color: #ff0000; /* KIRMIZI YAPILDI */
+            border-radius: 50%;
+            animation: twinkle linear infinite;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0; }
+            50% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        /* Buton */
+        .send-button {
+            background: linear-gradient(45deg, #ff0000, #ff6b6b); /* KIRMIZI YAPILDI */
+            border: none;
+            color: white;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.3); /* KIRMIZI YAPILDI */
+            position: relative;
+            overflow: hidden;
+        }
+
+        .send-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 0, 0, 0.4); /* KIRMIZI YAPILDI */
+        }
+
+        .send-button:active {
+            transform: translateY(1px);
+        }
+
+        .send-button::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 0, 0, 0.3), transparent); /* KIRMIZI YAPILDI */
+            transition: left 0.5s;
+        }
+
+        .send-button:hover::after {
+            left: 100%;
+        }
+
+        /* Kalp Animasyonu */
+        .hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            color: #ff0000; /* KIRMIZI YAPILDI */
+            opacity: 0;
+            animation: heartFloat 5s linear infinite;
+        }
+
+        @keyframes heartFloat {
+            0% {
+                opacity: 0;
+                transform: translateY(100vh) rotate(0deg);
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-100px) rotate(360deg);
+            }
+        }
+
+        /* Ay Animasyonu */
+        .moon {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            width: 80px;
+            height: 80px;
+            background: #ff6b6b; /* KIRMIZI TONU YAPILDI */
+            border-radius: 50%;
+            box-shadow: 0 0 20px #ff6b6b, 0 0 40px #ff6b6b; /* KIRMIZI TONU YAPILDI */
+            animation: moonGlow 4s infinite alternate;
+        }
+
+        .moon::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            width: 15px;
+            height: 15px;
+            background: #ff0000; /* KIRMIZI YAPILDI */
+            border-radius: 50%;
+            box-shadow: 20px -10px 0 #ff0000, 10px 25px 0 #ff0000; /* KIRMIZI YAPILDI */
+        }
+
+        @keyframes moonGlow {
+            from { box-shadow: 0 0 20px #ff6b6b, 0 0 40px #ff6b6b; } /* KIRMIZI TONU YAPILDI */
+            to { box-shadow: 0 0 30px #ff6b6b, 0 0 60px #ff6b6b, 0 0 80px #ff6b6b; } /* KIRMIZI TONU YAPILDI */
+        }
+
+        /* Gece Modu */
+        .night-sky {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+            z-index: -2;
+        }
+
+        /* Responsive Tasarım */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            .message {
+                font-size: 1.2rem;
+            }
+
+            .special {
+                font-size: 1.5rem;
+            }
+
+            .container {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .message {
+                font-size: 1rem;
+            }
+
+            .special {
+                font-size: 1.2rem;
+            }
+
+            .cat-gif {
+                width: 120px;
+                height: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="night-sky"></div>
+    <div class="stars" id="stars"></div>
+    <div class="hearts" id="hearts"></div>
+    <div class="moon"></div>
+
+    <div class="container">
+        <h1>İyi Geceler 💫</h1>
+
+        <div class="cat-gif">
+            <!-- Kedi GIF'i -->
+            <img src="https://media.giphy.com/media/3o7aD2d7hy9ktXNDP2/giphy.gif" alt="Uyuyan Kedi">
+        </div>
+
+        <div class="message-box">
+            <div class="message">İyi geceler benim gönlümün sultanı...</div>
+            <div class="message">İyi geceler kızım, gülüm, birtanem...</div>
+            <div class="message">İyi geceler hatunum, sevdamın kadını...</div>
+            <div class="special">İyi geceler benim kadınım!</div>
+            <div class="message">Tatlı rüyalar, Allah rahatlık huzur versin...</div>
+            <div class="message">Üstünü iyi ört, üşütme sonra 🥺</div>
+        </div>
+
+        <button class="send-button" id="sendButton">Mesajını Gönder</button>
+    </div>
+
+    <script>
+        // Yıldız oluşturma
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            const starCount = 150;
+
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+
+                // Rastgele boyut ve konum
+                const size = Math.random() * 3 + 1;
+                const left = Math.random() * 100;
+                const top = Math.random() * 100;
+                const duration = Math.random() * 5 + 3;
+
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.left = `${left}%`;
+                star.style.top = `${top}%`;
+                star.style.animationDuration = `${duration}s`;
+                star.style.animationDelay = `${Math.random() * 5}s`;
+
+                starsContainer.appendChild(star);
+            }
+        }
+
+        // Kalp oluşturma
+        function createHearts() {
+            const heartsContainer = document.getElementById('hearts');
+
+            setInterval(() => {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.innerHTML = '❤';
+
+                // Rastgele konum
+                const left = Math.random() * 100;
+                const duration = Math.random() * 3 + 3;
+                const size = Math.random() * 10 + 10;
+
+                heart.style.left = `${left}%`;
+                heart.style.animationDuration = `${duration}s`;
+                heart.style.fontSize = `${size}px`;
+
+                heartsContainer.appendChild(heart);
+
+                // Kalbi temizle
+                setTimeout(() => {
+                    heart.remove();
+                }, duration * 1000);
+            }, 300);
+        }
+
+        // Buton tıklama efekti
+        document.getElementById('sendButton').addEventListener('click', function() {
+            // Buton animasyonu
+            this.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                this.style.transform = 'scale(1)';
+            }, 150);
+
+            // Özel mesaj efekti
+            const messages = document.querySelectorAll('.message');
+            messages.forEach((msg, index) => {
+                setTimeout(() => {
+                    msg.style.animation = 'none';
+                    setTimeout(() => {
+                        msg.style.animation = 'textGlow 3s infinite alternate';
+                    }, 10);
+                }, index * 200);
+            });
+
+            // Özel efekt
+            const special = document.querySelector('.special');
+            special.style.animation = 'none';
+            setTimeout(() => {
+                special.style.animation = 'specialPulse 2s infinite';
+            }, 10);
+
+            // Baloncuk efekti
+            createBubbles();
+
+            // Başarı mesajı
+            alert('Mesajın manitana ulaştı! 💖 İyi geceler diler...');
+        });
+
+        // Baloncuk efekti
+        function createBubbles() {
+            const bubblesContainer = document.createElement('div');
+            bubblesContainer.style.position = 'fixed';
+            bubblesContainer.style.top = '0';
+            bubblesContainer.style.left = '0';
+            bubblesContainer.style.width = '100%';
+            bubblesContainer.style.height = '100%';
+            bubblesContainer.style.pointerEvents = 'none';
+            bubblesContainer.style.zIndex = '9999';
+            document.body.appendChild(bubblesContainer);
+
+            for (let i = 0; i < 20; i++) {
+                const bubble = document.createElement('div');
+                bubble.style.position = 'absolute';
+                bubble.style.width = '20px';
+                bubble.style.height = '20px';
+                bubble.style.background = 'rgba(255, 0, 0, 0.7)'; /* KIRMIZI YAPILDI */
+                bubble.style.borderRadius = '50%';
+                bubble.style.bottom = '0';
+                bubble.style.left = `${Math.random() * 100}%`;
+                bubble.style.animation = `bubbleRise ${Math.random() * 3 + 2}s ease-in-out forwards`;
+
+                // Özel animasyon tanımlama
+                const style = document.createElement('style');
+                style.textContent = `
+                    @keyframes bubbleRise {
+                        0% { transform: translateY(0) scale(1); opacity: 0.7; }
+                        100% { transform: translateY(-100vh) scale(0.3); opacity: 0; }
+                    }
+                `;
+                document.head.appendChild(style);
+
+                bubblesContainer.appendChild(bubble);
+
+                // Baloncuğu temizle
+                setTimeout(() => {
+                    bubble.remove();
+                }, 3000);
+            }
+
+            // Konteyneri temizle
+            setTimeout(() => {
+                bubblesContainer.remove();
+                style.remove();
+            }, 3000);
+        }
+
+        // Sayfa yüklendiğinde animasyonları başlat
+        window.addEventListener('load', function() {
+            createStars();
+            createHearts();
+
+            // Kedi gif animasyonu
+            const catGif = document.querySelector('.cat-gif');
+            setInterval(() => {
+                catGif.style.animation = 'none';
+                setTimeout(() => {
+                    catGif.style.animation = 'float 5s ease-in-out infinite, sparkle 2s infinite';
+                }, 10);
+            }, 10000);
+
+            // 3 saniye sonra kalp.html'ye yönlendirme
+            setTimeout(function() {
+                window.location.href = 'kalp.html';
+            }, 5000);
+        });
+
+        // Fare hareketi ile interaktif efekt
+        document.addEventListener('mousemove', function(e) {
+            const container = document.querySelector('.container');
+            const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
+            const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
+            container.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+        });
+    </script>
+</body>
+</html>
